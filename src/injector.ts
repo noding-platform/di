@@ -2,7 +2,7 @@ import { Record, Provider, Token, Injector, InjectableParameterHandler, InjectFl
 import { defaultParameterHandlerToken } from './token';
 import { createProviderRecord } from './util';
 import { IParameterDecorator } from '@noding/decorator';
-import { InjectMetadataKey, OptionalMetadataKey, SkipSelfMetadataKey } from './decorator';
+import { InjectMetadataKey, OptionalMetadataKey, SkipSelfMetadataKey, InjectDef } from './decorator';
 
 export class StaticInjectorNotFoundError extends Error {
     constructor() {
@@ -103,7 +103,8 @@ export const coreInjectorFactory = createInjectorFactory(topInjectorFactory, 'co
 }, {
     provide: InjectMetadataKey,
     useValue: (injector: Injector, param: IParameterDecorator, next: InjectableParameterHandler, def: any) => {
-        const [token] = param.args || [param.type];
+        const instance = param.def as InjectDef
+        const token = instance.token || param.type;
         const res = injector.get(token);
         return next(injector, res)
     }

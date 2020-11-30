@@ -1,6 +1,6 @@
 {
   "name": "@noding/di",
-  "version": "1.0.4",
+  "version": "1.0.8",
   "description": "依赖注入",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/noding-platform/di#readme",
   "dependencies": {
-    "@noding/decorator": "^1.0.6"
+    "@noding/decorator": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^14.14.10",

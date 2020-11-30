@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@noding/decorator@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@noding/decorator/-/decorator-1.0.6.tgz#3411e1c5d090dc2e268ad597dc32c3e1fb5ba96f"
-  integrity sha512-55QScMA1qe3MEJVc9OeufsdzBMO9QGP8Y7Fm4e3s+HNKiHWGsScQ1BISPHmaKurYNhAu6u8lSu0U9W1VB3Uh3g==
+"@noding/decorator@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@noding/decorator/-/decorator-1.0.7.tgz#dd4bc78df6430091979823603f3b2f2caa7d6e36"
+  integrity sha512-35fhOje4d8LdmaP+ixCAwbFUPDojbVU5nKLrNLjocrxmASh7W2slGQCLySetz+m92F+Tykz22tUSUpVdzfEqcQ==
   dependencies:
     reflect-metadata "^0.1.13"
 
