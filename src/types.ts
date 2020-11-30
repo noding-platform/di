@@ -14,7 +14,12 @@ export abstract class Injector {
     readonly name: string | undefined;
     abstract get<T>(token: Token<T>, def?: T, flags?: InjectFlags): T;
 }
-export type StringType<T> = string & { _type: T }
+export type StringType<T> = string & { _type?: T }
+export type BooleanType<T> = boolean & { _type?: T }
+export type NumberType<T> = number & { _type?: T }
+export type ObjectType<T> = object & { _type?: T }
+export type SymbolType<T> = symbol & { _type?: T }
+
 export class Record<T = any> {
     constructor(private options: {
         factory?: () => T,
@@ -49,7 +54,7 @@ export class InjectionToken<T> {
     constructor(private _name: string) { }
 }
 
-export type Token<T = any> = InjectionToken<T> | Type<T> | AbstractType<T> | StringType<T>;
+export type Token<T = any> = InjectionToken<T> | Type<T> | AbstractType<T> | StringType<T> | BooleanType<T> | NumberType<T> | ObjectType<T> | SymbolType<T>;
 
 import { OptionalDef, SkipSelfDef, SelfDef, InjectDef } from './decorator'
 export type DependencyOperation<T = any> = OptionalDef | SkipSelfDef | SelfDef | InjectDef | Token<T>;
