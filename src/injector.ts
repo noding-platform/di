@@ -45,7 +45,6 @@ export class StaticInjector extends Injector {
         if (isOptional) {
             return def as T;
         }
-        debugger;
         throw new StaticInjectorNotFoundError()
     }
 
