@@ -5,8 +5,11 @@ import { IParameterDecorator } from '@noding/decorator';
 import { InjectMetadataKey, OptionalMetadataKey, SkipSelfMetadataKey, InjectDef } from './decorator';
 
 export class StaticInjectorNotFoundError extends Error {
-    constructor() {
-        super(`StaticInjectorNotFoundError`)
+    get token() {
+        return this._token;
+    }
+    constructor(private _token: Token) {
+        super(`StaticInjectorNotFoundError ${JSON.stringify(_token)}`)
     }
 }
 
@@ -42,10 +45,11 @@ export class StaticInjector extends Injector {
         if (this.parent && isParent) {
             return this.parent.get(token, def)
         }
-        if (isOptional) {
-            return def as T;
+        if (!isOptional && typeof def === 'undefined') {
+            debugger;
+            throw new StaticInjectorNotFoundError(token)
         }
-        throw new StaticInjectorNotFoundError()
+        return def as T;
     }
 
     getRecord<T>(token: Token<T>): Record<T> | undefined {
